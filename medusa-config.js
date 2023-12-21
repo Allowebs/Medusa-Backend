@@ -39,7 +39,6 @@ const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 const plugins = [
   `medusa-fulfillment-manual`,
   /**`medusa-payment-manual`,*/
-  `medusa-plugin-wishlist`,
   {
     resolve: `@medusajs/file-local`,
     options: {
@@ -61,13 +60,6 @@ const plugins = [
     options: {
       api_key: process.env.STRIPE_API_KEY,
       webhook_secret: process.env.STRIPE_WEBHOOK_SECRET
-    }
-  },
-  {
-    resolve: `medusa-product-ai-widget`,
-    options: {
-      api_key: process.env.OPENAI_API_KEY,
-      enableUI: true
     }
   }
 ];
