@@ -23,10 +23,13 @@ try {
 
 // CORS when consuming Medusa from admin
 const ADMIN_CORS =
-  process.env.ADMIN_CORS || "http://localhost:7000,http://localhost:7001,https://medusa-frontend-blush.vercel.app";
+  process.env.ADMIN_CORS ||
+  "http://localhost:7000,http://localhost:7001,https://medusa-frontend-blush.vercel.app";
 
 // CORS to avoid issues when consuming Medusa from a client
-const STORE_CORS = process.env.STORE_CORS || "http://localhost:8000,https://backend-production-1aae.up.railway.app";
+const STORE_CORS =
+  process.env.STORE_CORS ||
+  "http://localhost:8000,https://backend-production-1aae.up.railway.app";
 
 const DATABASE_URL =
   process.env.DATABASE_URL || "postgres://localhost/medusa-starter-default";
@@ -35,13 +38,13 @@ const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
 const plugins = [
   `medusa-fulfillment-manual`,
-  `medusa-payment-manual`,
+  /**`medusa-payment-manual`,*/
   `medusa-plugin-wishlist`,
   {
     resolve: `@medusajs/file-local`,
     options: {
-      upload_dir: "uploads",
-    },
+      upload_dir: "uploads"
+    }
   },
   {
     resolve: "@medusajs/admin",
@@ -49,16 +52,16 @@ const plugins = [
     options: {
       autoRebuild: true,
       develop: {
-        open: process.env.OPEN_BROWSER !== "false",
-      },
-    },
+        open: process.env.OPEN_BROWSER !== "false"
+      }
+    }
   },
   {
     resolve: `medusa-payment-stripe`,
     options: {
       api_key: process.env.STRIPE_API_KEY,
-      webhook_secret: process.env.STRIPE_WEBHOOK_SECRET,
-    },
+      webhook_secret: process.env.STRIPE_WEBHOOK_SECRET
+    }
   },
   {
     resolve: `medusa-product-ai-widget`,
@@ -81,7 +84,7 @@ const modules = {
     options: {
       redisUrl: REDIS_URL
     }
-  },
+  }
 };
 
 /** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
@@ -98,5 +101,5 @@ const projectConfig = {
 module.exports = {
   projectConfig,
   plugins,
-  modules,
+  modules
 };
