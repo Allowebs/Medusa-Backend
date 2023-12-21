@@ -24,12 +24,12 @@ try {
 // CORS when consuming Medusa from admin
 const ADMIN_CORS =
   process.env.ADMIN_CORS ||
-  "http://localhost:7000,http://localhost:7001,https://medusa-frontend-blush.vercel.app";
+  "https://medusa-frontend-blush.vercel.app";
 
 // CORS to avoid issues when consuming Medusa from a client
 const STORE_CORS =
   process.env.STORE_CORS ||
-  "http://localhost:8000,https://backend-production-1aae.up.railway.app";
+  "https://backend-production-1aae.up.railway.app";
 
 const DATABASE_URL =
   process.env.DATABASE_URL || "postgres://localhost/medusa-starter-default";
@@ -83,9 +83,9 @@ const modules = {
 const projectConfig = {
   jwtSecret: process.env.JWT_SECRET,
   cookieSecret: process.env.COOKIE_SECRET,
-  store_cors: STORE_CORS,
+  /**store_cors: STORE_CORS,*/
   database_url: DATABASE_URL,
-  admin_cors: ADMIN_CORS,
+  /**admin_cors: ADMIN_CORS,*/
   redis_url: REDIS_URL
 };
 
