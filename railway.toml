@@ -1,6 +1,5 @@
 [build]
 builder = "NIXPACKS"
-buildCommand = "yarn run build"
 
 [deploy]
 numReplicas = 1
