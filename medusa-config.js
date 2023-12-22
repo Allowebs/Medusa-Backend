@@ -22,14 +22,10 @@ try {
 } catch (e) {}
 
 // CORS when consuming Medusa from admin
-const ADMIN_CORS =
-  process.env.ADMIN_CORS ||
-  "/http:\/\/*/";
+const ADMIN_CORS = process.env.ADMIN_CORS || "/http://*/";
 
 // CORS to avoid issues when consuming Medusa from a client
-const STORE_CORS =
-  process.env.STORE_CORS ||
-  "/http:\/\/*/";
+const STORE_CORS = process.env.STORE_CORS || "/http://*/";
 
 const DATABASE_URL =
   process.env.DATABASE_URL || "postgres://localhost/medusa-starter-default";
@@ -50,8 +46,8 @@ const plugins = [
     /** @type {import('@medusajs/admin').PluginOptions} */
     options: {
       autoRebuild: true,
-      serve:true,
-      autoRebuild:true,
+      serve: true,
+      autoRebuild: true,
       develop: {
         open: process.env.OPEN_BROWSER !== "false"
       }
@@ -62,6 +58,15 @@ const plugins = [
     options: {
       api_key: process.env.STRIPE_API_KEY,
       webhook_secret: process.env.STRIPE_WEBHOOK_SECRET
+    }
+  },
+  {
+    resolve: `medusa-file-minio`,
+    options: {
+      endpoint: process.env.MINIO_ENDPOINT,
+      bucket: process.env.MINIO_BUCKET,
+      access_key_id: process.env.MINIO_ACCESS_KEY,
+      secret_access_key: process.env.MINIO_SECRET_KEY
     }
   }
 ];
