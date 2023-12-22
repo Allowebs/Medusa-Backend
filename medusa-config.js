@@ -61,13 +61,13 @@ const plugins = [
     }
   },
   {
-    resolve: `medusa-file-minio`,
+    resolve: `@medusajs/file-local`,
     options: {
-      endpoint: process.env.MINIO_ENDPOINT,
-      bucket: process.env.MINIO_BUCKET,
-      access_key_id: process.env.MINIO_ACCESS_KEY,
-      secret_access_key: process.env.MINIO_SECRET_KEY
+      backend_url: process.env.FILE_BACKEND_URL
     }
+  },
+  {
+    resolve: `medusa-plugin-wishlist`
   }
 ];
 
